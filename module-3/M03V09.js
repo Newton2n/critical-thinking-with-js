@@ -38,14 +38,42 @@ class LinkedList {
   }
 
   insert(index, value) {
-    if (index < 0 || this.length > index) {
+    console.log(this.length, index);
+    if (index < 0 || index > this.length) {
       throw new Error("Index out of bound");
     }
     if (index === 0) {
-      this.prepend(value);
+      return this.prepend(value);
     } else if (this.length === index) {
-      this.append(value);
+      return this.append(value);
     }
+
+    // new node
+    const newNode = new Node(value);
+
+    //* leading node
+    const leadingNode = this.traverseToIndex(index - 1);
+    //* holding note
+    const holdingNode = leadingNode.next;
+
+    leadingNode.next = newNode;
+
+    newNode.next = holdingNode;
+    // console.log("Leading node ", leadingNode);
+    // console.log("Holding node ", holdingNode);
+
+    this.length++;
+  }
+
+  traverseToIndex(index) {
+    let currentNode = this.head;
+    let count = 0;
+    while (count !== index) {
+      currentNode = currentNode.next;
+      count++;
+    }
+
+    return currentNode;
   }
 
   print() {
@@ -60,18 +88,22 @@ class LinkedList {
       temp = temp.next;
     }
 
-    console.log(arr);
+    return arr;
   }
 }
 
 const linkedList = new LinkedList();
 
-linkedList.append(1);
-linkedList.append(2);
-linkedList.append(3);
 
-linkedList.prepend(-1);
-linkedList.prepend(-2);
-linkedList.prepend(-3);
+linkedList.append(1);
+linkedList.append(3);
+linkedList.append(4);
+
+// console.log(linkedList.print());
+// console.log(linkedList.traverseToIndex(1));
+console.log(linkedList.insert(0, 0));
+console.log(linkedList.insert(2, 2));
+console.log(linkedList.insert(5, 5));
+console.log(linkedList.insert(6, 6));
 
 console.log(linkedList.print());
