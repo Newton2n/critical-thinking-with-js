@@ -67,7 +67,7 @@ class LinkedList {
   }
 
   remove(index) {
-    console.log(this.range);
+    console.log(this.length);
     if (index < 0 || index >= this.length) {
       throw new Error("Index out of bound");
     }
@@ -112,6 +112,7 @@ class LinkedList {
   print() {
     // console.log(this.length)
     // console.log(this.head);
+    
     let temp = this.head;
     console.log(temp);
     console.log(this.length);
@@ -133,12 +134,14 @@ linkedList.append(3);
 linkedList.append(4);
 
 console.log(linkedList.print());
-console.log(linkedList.traverseToIndex(1));
-console.log(linkedList.insert(0, 0));
-console.log(linkedList.insert(2, 2));
-console.log(linkedList.insert(5, 5));
-console.log(linkedList.insert(6, 6));
+// console.log(linkedList.traverseToIndex(1));
+// console.log(linkedList.insert(0, 0));
+// console.log(linkedList.insert(2, 2));
+// console.log(linkedList.insert(5, 5));
+// console.log(linkedList.insert(6, 6));
 
-console.log(linkedList.print());
-console.log(linkedList.remove(3));
-console.log(linkedList.print());
+// console.log(linkedList.print());
+// console.log(linkedList.remove(3));
+// console.log(linkedList.print());
+
+console.log(linkedList.traverseToIndex(3));
